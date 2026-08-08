@@ -6,13 +6,13 @@
   <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript 5">
   <img src="https://img.shields.io/badge/three.js-r169-000000?style=flat&logo=three.js&logoColor=white" alt="three.js r169">
   <img src="https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white" alt="Vite 5">
-  <a href="https://dayinji.github.io/sen-3d-resume/"><img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat" alt="Live Demo"></a>
+  <a href="https://about.senbuzy.com/"><img src="https://img.shields.io/badge/live-demo-brightgreen?style=flat" alt="Live Demo"></a>
 </p>
 
 <p align="center"><b>Scrolling is the camera move. Your résumé, living inside a 3D scene.</b></p>
 
 <p align="center">
-  <a href="https://dayinji.github.io/sen-3d-resume/">Live Demo</a> |
+  <a href="https://about.senbuzy.com/">Live Demo</a> |
   <a href="#quick-start">Quick Start</a> |
   <a href="#make-it-yours">Make It Yours</a> |
   <a href="#swapping-the-character-model">Swap the Model</a> |
@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-  <a href="https://dayinji.github.io/sen-3d-resume/"><img src="docs/preview.jpg" alt="The 3D résumé hero: a scroll-driven character model behind the foreground About copy" width="800"></a>
+  <a href="https://about.senbuzy.com/"><img src="docs/preview.jpg" alt="The 3D résumé hero: a scroll-driven character model behind the foreground About copy" width="800"></a>
 </p>
 
 A scroll-driven personal 3D résumé built on **React Three Fiber + TypeScript**: one fixed 3D background (a character model that reacts to scroll) plus scrollable HTML content in front (About → résumé → works). The camera path is the animation baked into the glb — the scrollbar just wipes through its timeline — with auto-focus depth-of-field and eye-follows-cursor layered on top. It's a pure front-end SPA: `npm run build` gives you a static `dist/` that runs anywhere.
