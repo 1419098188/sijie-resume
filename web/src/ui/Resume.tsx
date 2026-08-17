@@ -92,51 +92,55 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
   },
   zh: {
     title: 'Résumé',
-    entries: [
+        entries: [
       {
-        period: '2013 – 2017',
-        place: '中山大学',
-        role: '软件工程 · 本科',
-      },
-      {
-        period: '2017 – 2020',
-        place: 'HOTSAR 工作室 · 上海',
-        role: '联合创始人',
-        logo: { src: `${import.meta.env.BASE_URL}images/hotsar.jpg`, alt: 'HOTSAR' },
+        period: '2022 – 2026',
+        place: '多伦多大学 · University of Toronto',
+        role: '数学与物理双主修 · 本科',
         points: [
-          '联合创始人，团队人数 20+',
-          '服务客户：阿里系品牌、腾讯、网易、滴滴、华润、麦当劳…',
-          '负责：技术开发 / 创意策划 / 动画制作 / 团队管理',
+          'QS排名25，加拿大排名第1',
+          '主修课程：Python & Java、线性代数、高等数学、经典力学、天体物理、热力学、量子力学、概率论',
+          '掌握纯数学与应用数学理论，具备完整实验流程能力（方案设计→仪器操作→数据收集→误差评估→结论总结）',
         ],
       },
       {
-        period: '2020 – 2025',
-        place: '坏打印机工作室 · 深圳',
-        role: '创始人',
-        logo: { src: `${import.meta.env.BASE_URL}images/bp.png`, alt: '坏打印机工作室' },
+        period: '2024 – 2025',
+        place: '乔治布朗学院 · George Brown College',
+        role: '媒体基础项目',
         points: [
-          '创始人，团队人数 14',
-          '服务客户：王者荣耀 / 携程 / 字节 / 快手 / VIVO / 传音 / 小米…',
-          '负责：团队管理 / 创意策划 / 动画制作 / 技术开发',
+          '主修：多媒体入门、视频制作、摄影入门、场面调度、电影结构',
+          '具备摄影拍摄、光影把控及图片后期修图能力',
+          '掌握短视频拍摄、内容构思、现场调度、镜头运用和视频编辑',
         ],
       },
       {
-        period: '2025 – 至今',
-        place: '自媒体博主',
-        groups: [
-          {
-            heading: '小郑还挺忙',
-            logoImg: `${import.meta.env.BASE_URL}images/buzyzheng.png`,
-            sub: '科技 DIY 博主',
-            items: ['抖音 12 万 · B站 8.7 万 · 小红书 2.3 万 关注'],
-            links: SOCIAL_LINKS,
-          },
+        period: '2021 – 2022',
+        place: '多伦多大学 IFP 预科项目',
+        role: 'International Foundation Program',
+        points: [
+          '帮助国际学生解决大学过渡、语言学习和文化融入的预备课程',
+          '完成从国内教育体系到北美大学的平稳过渡',
         ],
       },
       {
-        period: '2026 – 至今',
-        place: '独立开发',
-        groups: [{ logo: 'zooop', sub: 'AI 创作平台', link: 'https://zooop.ai/' }],
+        period: '2018 – 2021',
+        place: '加拿大高中',
+        role: '3年本地高中',
+        points: [
+          '国内九年义务教育 + 加拿大8年留学经历（3年高中 + 5年大学）',
+          '熟练运用中英双语，深度理解中西方文化差异与思维模式',
+          '锻炼了自主学习、时间管理与跨文化交流能力',
+        ],
+      },
+      {
+        period: '至今',
+        place: '特长与竞技',
+        role: '羽毛球 · 竞技游戏',
+        points: [
+          '羽毛球系统训练，可对抗大部分业余选手',
+          '深耕竞技性游戏，实力抗衡半职业选手',
+          '竞技经历练就稳定心态、出色抗压能力与临场应变能力',
+        ],
       },
     ],
   },
