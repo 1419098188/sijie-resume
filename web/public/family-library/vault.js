@@ -3,7 +3,6 @@
 window.FamilyVault=(()=>{
  let key=null,index=null,generation=0,urls=new Map(),script=null,engineUrl=null;
  const text=new TextEncoder(),decode=new TextDecoder();
- const norm=s=>String(s).normalize('NFKC').replace(/[\s-]/g,'').toUpperCase();
  const from64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
  async function get(relative){
   if(!/^e\/[a-f0-9]{48}\.bin$/.test(relative))throw Error('资料路径不正确。');
@@ -18,11 +17,17 @@ window.FamilyVault=(()=>{
   lock();const epoch=generation;
   if(!globalThis.isSecureContext||!crypto?.subtle)throw Error('当前浏览器不支持安全解锁，请从微信菜单选择在浏览器打开。');
   const r=await fetch('vault.json',{credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer'});if(!r.ok)throw Error('无法读取资料配置，请稍后重试。');
-  const cfg=await r.json();if(cfg.version!==1||cfg.iterations!==600000||cfg.kdf!=='PBKDF2-SHA256')throw Error('资料版本不正确。');
-  const material=await crypto.subtle.importKey('raw',text.encode(norm(passphrase)),{name:'PBKDF2'},false,['deriveKey']);
-  const candidate=await crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt:from64(cfg.salt),iterations:cfg.iterations},material,{name:'AES-GCM',length:256},false,['decrypt']);
+  const cfg=await r.json();if(cfg.version!==2||cfg.iterations!==600000||cfg.kdf!=='PBKDF2-SHA256')throw Error('网页正在更新，请从家人发来的新专属链接重新进入。');
+  const access=new URLSearchParams(location.hash.slice(1)).get('access');
+  if(!access||!/^[A-Za-z0-9_-]{43}$/.test(access))throw Error('请使用家人发来的完整专属链接，再输入家庭密码。');
+  const combined='family-link-password-v2\0'+access+'\0'+String(passphrase).normalize('NFKC');
+  const material=await crypto.subtle.importKey('raw',text.encode(combined),{name:'PBKDF2'},false,['deriveKey']);
+  const wrappingKey=await crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt:from64(cfg.salt),iterations:cfg.iterations},material,{name:'AES-GCM',length:256},false,['decrypt']);
+  let candidate;
+  try {const rawKey=await decrypt(await get(cfg.wrappedKey),wrappingKey,cfg.wrappedKey);candidate=await crypto.subtle.importKey('raw',rawKey,{name:'AES-GCM'},false,['decrypt']);}
+  catch{throw Error('密码不对，或专属链接不完整，请核对后重试。');}
   const bytes=await get(cfg.index);let decoded;
-  try{decoded=JSON.parse(decode.decode(await decrypt(bytes,candidate,cfg.index)));}catch{throw Error('口令不对，或资料包不完整，请核对后重试。');}
+  try{decoded=JSON.parse(decode.decode(await decrypt(bytes,candidate,cfg.index)));}catch{throw Error('资料包不完整，请联系家人重新核对。');}
   if(epoch!==generation)throw Error('资料库已锁定。');
   const blob=new Blob([decoded.engine],{type:'text/javascript'});engineUrl=URL.createObjectURL(blob);
   script=document.createElement('script');script.src=engineUrl;

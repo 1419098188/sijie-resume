@@ -1,1 +1,1 @@
-{"version":1,"kdf":"PBKDF2-SHA256","iterations":600000,"salt":"PYdpFCx/q0i++6/Zrz2Bhg==","index":"e/70d5e166caca151d2d2e55c654f6b27785e6d9456fe19547.bin"}
+{"version":2,"kdf":"PBKDF2-SHA256","iterations":600000,"salt":"bNGhy852eXssamIQlUOl+Q==","index":"e/70d5e166caca151d2d2e55c654f6b27785e6d9456fe19547.bin","wrappedKey":"e/3a7a8b6d19b7b446ad16e9ef27274e219cd165b93d9326c2.bin"}
